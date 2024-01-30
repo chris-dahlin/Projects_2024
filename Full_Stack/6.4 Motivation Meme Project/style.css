@@ -9,6 +9,9 @@ img {
 
 }
 
+h1 {
+    text-transform: uppercase;
+}
 
 .meme-text {
     color: white;
