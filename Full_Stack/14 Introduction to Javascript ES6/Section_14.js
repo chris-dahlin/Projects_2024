@@ -52,8 +52,35 @@
 
 
 
-var x = 3;
-var y = x++;
-console.log(y);
-y += 1;
-console.log(y);
+// var x = 3;
+// var y = x++;
+// console.log(y);
+// y += 1;
+// console.log(y);
+function getMilk() {
+
+    console.log("leaveHouse");
+    console.log("moveRight");
+    console.log("moveRight");
+    console.log("moveRight");
+    console.log("moveUp");
+    console.log("moveUp");
+    console.log("moveUp");
+    console.log("moveUp");
+    console.log("moveUp");
+    console.log("moveRight");
+    console.log("buyMilk");
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("enterHouse");
+    
+    }
+
+getMilk();
