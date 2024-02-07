@@ -57,30 +57,54 @@
 // console.log(y);
 // y += 1;
 // console.log(y);
-function getMilk() {
 
+
+// function getMilk() {   
+//     console.log("leaveHouse");
+//     console.log("moveRight");
+//     console.log("moveRight");
+//     console.log("moveUp");
+//     console.log("moveUp");
+//     console.log("moveUp");
+//     console.log("moveUp");
+//     console.log("moveRight");
+//     console.log("moveRight");
+//     console.log("moveLeft");
+//     console.log("moveLeft");
+//     console.log("moveDown");
+//     console.log("moveDown");
+//     console.log("moveDown");
+//     console.log("moveDown");
+//     console.log("moveLeft");
+//     console.log("moveLeft");
+//     console.log("enterHouse");
+//   }
+
+  function getMilk(funds) {   
     console.log("leaveHouse");
     console.log("moveRight");
     console.log("moveRight");
-    console.log("moveRight");
-    console.log("moveUp");
     console.log("moveUp");
     console.log("moveUp");
     console.log("moveUp");
     console.log("moveUp");
     console.log("moveRight");
-    console.log("buyMilk");
-    console.log("moveLeft");
-    console.log("moveLeft");
-    console.log("moveLeft");
-    console.log("moveLeft");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("enterHouse");
-    
-    }
+    console.log("moveRight");
 
-getMilk();
+    var numberOfBottles = Math.round(funds / 1.5);
+
+    console.log("buy " + numberOfBottles + " bottles of milk");
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("enterHouse");
+  }
+
+  getMilk(5);
+
+  
