@@ -5,4 +5,12 @@
 
 var loveScore = Math.floor(Math.random() * 100) + 1;
 
-console.log(loveScore);
+if (loveScore >= 80) {
+    console.log("Your love score is " + loveScore + "%. You are the best!");
+}
+    if (loveScore > 30 && loveScore < 80) {
+        console.log("You are almost perfect!");
+    }
+    if (loveScore <= 29) {
+    console.log("Your love score is " + loveScore + "%. You go together like oil and water.");
+}
