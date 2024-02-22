@@ -80,34 +80,34 @@
 //     console.log("enterHouse");
 //   }
 
-  function getMilk(funds) {   
-    console.log("leaveHouse");
-    console.log("moveRight");
-    console.log("moveRight");
-    console.log("moveUp");
-    console.log("moveUp");
-    console.log("moveUp");
-    console.log("moveUp");
-    console.log("moveRight");
-    console.log("moveRight");
+  // function getMilk(funds) {   
+  //   console.log("leaveHouse");
+  //   console.log("moveRight");
+  //   console.log("moveRight");
+  //   console.log("moveUp");
+  //   console.log("moveUp");
+  //   console.log("moveUp");
+  //   console.log("moveUp");
+  //   console.log("moveRight");
+  //   console.log("moveRight");
 
-    var numberOfBottles = Math.round(funds / 1.5);
+  //   var numberOfBottles = Math.round(funds / 1.5);
 
-    console.log("buy " + numberOfBottles + " bottles of milk");
-    console.log("moveLeft");
-    console.log("moveLeft");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("moveDown");
-    console.log("moveLeft");
-    console.log("moveLeft");
-    console.log("enterHouse");
-    return funds % 1.5; // remainder of funds
-  }
+  //   console.log("buy " + numberOfBottles + " bottles of milk");
+  //   console.log("moveLeft");
+  //   console.log("moveLeft");
+  //   console.log("moveDown");
+  //   console.log("moveDown");
+  //   console.log("moveDown");
+  //   console.log("moveDown");
+  //   console.log("moveLeft");
+  //   console.log("moveLeft");
+  //   console.log("enterHouse");
+  //   return funds % 1.5; // remainder of funds
+  // }
 
-  var change = getMilk(4);
-  console.log("Change: " + "$" + change);
+  // var change = getMilk(4);
+  // console.log("Change: " + "$" + change);
 
 
 
@@ -128,4 +128,31 @@
 //     }
     
 //     lifeInWeeks(37);
-    
+  
+
+
+
+//Create your function below this line.
+//The first parameter should be the weight and the second should be the height.
+
+
+
+
+/* If my weight is 65Kg and my height is 1.8m, I should be able to call your function like this:
+
+var bmi = bmiCalculator(65, 1.8); 
+
+bmi should equal 20 when it's rounded to the nearest whole number.
+
+bmi = weight(kg)/height(m)^2
+
+*/
+
+// var bmi = bmiCalculator(65, 1.8); 
+
+function bmiCalculator(weight, height) {
+  var bmi = weight / (height * height);
+  return Math.round(bmi);
+}
+
+console.log(bmiCalculator(65, 1.8));
