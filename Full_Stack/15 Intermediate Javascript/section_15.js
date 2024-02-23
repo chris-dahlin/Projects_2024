@@ -46,16 +46,28 @@
 
 // Leap Year
 
-function isLeapYear(year) {
-    if (year % 400 === 0) {
-    return "Leap year";
-    } else if (year % 100 === 0) {
-        return "Not leap year.";
-    } else if (year % 4 === 0) {
-        return "Leap year";
-    } else {
-        return "Not leap year.";
-    }
-  }
+// function isLeapYear(year) {
+//     if (year % 400 === 0) {
+//     return "Leap year";
+//     } else if (year % 100 === 0) {
+//         return "Not leap year.";
+//     } else if (year % 4 === 0) {
+//         return "Leap year";
+//     } else {
+//         return "Not leap year.";
+//     }
+//   }
 
-  console.log(isLeapYear(2022));
+//   console.log(isLeapYear(2022));
+
+
+// var guestList = ["Chris", "Bob", "Amanda", "June", "Oliver", "Aliza"];
+
+// var guestName = prompt("What is your name?");
+
+// if (guestList.includes(guestName)) {
+//     alert("Welcome back, " + guestName + "!");
+// }
+// else {
+//   alert("We're sorry, " + guestName + ", but you are not on our list.");
+// }
