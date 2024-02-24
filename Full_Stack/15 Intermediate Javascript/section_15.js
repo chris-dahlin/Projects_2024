@@ -71,3 +71,30 @@
 // else {
 //   alert("We're sorry, " + guestName + ", but you are not on our list.");
 // }
+
+// function fizzbuzz(n) {
+//   for (let i = 1; i <= n; i++) {
+//     let output = "";
+//     if (i % 3 === 0) output += "Fizz";
+//     if (i % 5 === 0) output += "Buzz";
+//     console.log(output || i);
+//   }
+// }
+
+// // Example usage
+// fizzbuzz(100); // Prints FizzBuzz output from 1 to 100
+
+function fizzbuzz(n) {
+  let result = []; // Initialize an empty array to store the output
+  for (let i = 1; i <= n; i++) {
+    let output = "";
+    if (i % 3 === 0) output += "Fizz";
+    if (i % 5 === 0) output += "Buzz";
+    result.push(output || i); // Add the output to the result array
+  }
+  return result; // Return the result array
+}
+
+// Example usage
+let outputArray = fizzbuzz(100);
+console.log(outputArray); // Prints the output array containing FizzBuzz output from 1 to 100
