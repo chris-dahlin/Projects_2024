@@ -138,24 +138,106 @@
 //   i++
 // }
 
-var output = []; 
-var count = 1;
+// var output = []; 
+// var count = 1;
 
-function fizzBuzz() {
+// function fizzBuzz() {
 
-while (count <= 100) {
+// while (count <= 100) {
 
-  if (count % 3 == 0 && count % 5 == 0) {
-        output.push("FizzBuzz");
-    } else if (count % 3 == 0) {
-        output.push("Fizz");
-    } else if (count % 5 == 0) {
-        output.push("Buzz");
-    } else {
-        output.push(count);
-    }
-    count++;
+//   if (count % 3 == 0 && count % 5 == 0) {
+//         output.push("FizzBuzz");
+//     } else if (count % 3 == 0) {
+//         output.push("Fizz");
+//     } else if (count % 5 == 0) {
+//         output.push("Buzz");
+//     } else {
+//         output.push(count);
+//     }
+//     count++;
 
-    console.log(output);
+//     console.log(output);
+//   }
+// }
+
+// var count = 99;
+
+// while (count >= 1) {
+//   console.log(count + " bottles of beer on the wall, " + count + " bottles of beer. Take one down and pass it around, " + count + " bottles of beer on the wall. ");
+//   count--;
+//   if (count == 1) {
+//     console.log(count + " bottle of beer on the wall, " + count + " bottle of beer. Take one down and pass it around, " + count + " bottle of beer on the wall. ");
+//   }
+//   if (count <= 0) {
+//     console.log("No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall.");
+//   }
+// }
+
+// var numberOfBottles = 99
+// while (numberOfBottles >= 0) {
+//     var bottleWord = "bottle";
+//     if (numberOfBottles === 1) {
+//         bottleWord = "bottles";
+//     } 
+//     console.log(numberOfBottles + " " + bottleWord + " of beer on the wall");
+//     console.log(numberOfBottles + " " + bottleWord + " of beer,");
+//     console.log("Take one down, pass it around,");
+// 	numberOfBottles--;
+//     console.log(numberOfBottles + " " + bottleWord + " of beer on the wall.");
+// }
+
+// var output = []; 
+
+// function fizzBuzz() {
+
+// for (count = 1; count <= 100; count++) {
+
+//   if (count % 3 == 0 && count % 5 == 0) {
+//         output.push("FizzBuzz");
+//     } else if (count % 3 == 0) {
+//         output.push("Fizz");
+//     } else if (count % 5 == 0) {
+//         output.push("Buzz");
+//     } else {
+//         output.push(count);
+//     }
+//     console.log(output);
+//   }
+// }
+
+// fizzBuzz();
+
+function fibonacciGenerator (n) {
+  //Do NOT change any of the code above 👆
+      
+      //Write your code here:
+      
+  var output = [];
+
+  if (n === 1) {
+    output = [0];
   }
-}
+      
+  else if (n === 2) {
+    output = [0, 1];
+  }
+
+  else {
+    output = [0, 1];
+
+    for (var i = 2; i < n; i++) {
+
+    output.push(output[output.length -2] + output[output.length - 1]);
+    }
+  }
+
+  return output;
+      
+      //Return an array of fibonacci numbers starting from 0.
+      
+  //Do NOT change any of the code below 👇
+  }
+
+  output = fibonacciGenerator(10);
+  console.log(output);
+  
