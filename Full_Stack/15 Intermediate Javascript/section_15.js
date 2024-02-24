@@ -84,17 +84,78 @@
 // // Example usage
 // fizzbuzz(100); // Prints FizzBuzz output from 1 to 100
 
-function fizzbuzz(n) {
-  let result = []; // Initialize an empty array to store the output
-  for (let i = 1; i <= n; i++) {
-    let output = "";
-    if (i % 3 === 0) output += "Fizz";
-    if (i % 5 === 0) output += "Buzz";
-    result.push(output || i); // Add the output to the result array
-  }
-  return result; // Return the result array
-}
+// function fizzbuzz(n) {
+//   let result = []; // Initialize an empty array to store the output
+//   for (let i = 1; i <= n; i++) {
+//     let output = "";
+//     if (i % 3 === 0) output += "Fizz";
+//     if (i % 5 === 0) output += "Buzz";
+//     result.push(output || i); // Add the output to the result array
+//   }
+//   return result; // Return the result array
+// }
 
-// Example usage
-let outputArray = fizzbuzz(100);
-console.log(outputArray); // Prints the output array containing FizzBuzz output from 1 to 100
+// // Example usage
+// let outputArray = fizzbuzz(100);
+// console.log(outputArray); // Prints the output array containing FizzBuzz output from 1 to 100
+
+// function whosBuyingLunch(names) {
+//   // Get the length of the names array
+//   const length = names.length;
+  
+//   // Generate a random index between 0 and length - 1
+//   const randomIndex = Math.floor(Math.random() * length);
+  
+//   // Select the name at the randomly generated index
+//   const selectedName = names[randomIndex];
+  
+//   // Return the output string
+//   return `${selectedName} is going to buy lunch today!`;
+// }
+
+// // Example input
+// const names = ["Angela", "Ben", "Jenny", "Michael", "Chloe"];
+
+// // Call the function and store the result
+// const output = whosBuyingLunch(names);
+
+// // Output the result
+// console.log(output);
+
+// function whoPaying(names){
+
+// var people = names.length;
+// var randomPerson = Math.floor(Math.random() * people);
+// var name = names[randomPerson];
+
+// return name + " is going to buy lunch today!";
+// }
+
+// var i = 1;
+
+// while(i<5) {
+//   console.log(i);
+//   i++
+// }
+
+var output = []; 
+var count = 1;
+
+function fizzBuzz() {
+
+while (count <= 100) {
+
+  if (count % 3 == 0 && count % 5 == 0) {
+        output.push("FizzBuzz");
+    } else if (count % 3 == 0) {
+        output.push("Fizz");
+    } else if (count % 5 == 0) {
+        output.push("Buzz");
+    } else {
+        output.push(count);
+    }
+    count++;
+
+    console.log(output);
+  }
+}
