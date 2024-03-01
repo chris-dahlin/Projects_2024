@@ -7,6 +7,11 @@ console.log($("img").attr("src"));
 $("a").attr("href", "https://www.youtube.com");
 
 
-$('h1').click(function() {
-$('h1').css('color', 'purple');
+$('button').click(function() {
+$('h1').slideUp().slideDown().slideUp().slideDown().animate({fontSize: '50px'});
 });
+
+
+// $("h1").on("mouseover", function() {
+//     $("h1").css("color", "purple");
+// });
