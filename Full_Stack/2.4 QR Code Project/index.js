@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import qr from 'qr-image';
 import fs from 'fs';
+import { log } from 'console';
 
 inquirer
   .prompt([
@@ -13,6 +14,7 @@ inquirer
     const url = answers.URL;
     var qr_svg = qr.image(url);
     qr_svg.pipe(fs.createWriteStream("qr_img.png"));
+    console.log(answers);
 
     fs.writeFile("URL.txt", url, (err) => {
       if (err) throw err;
