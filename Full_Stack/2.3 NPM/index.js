@@ -5,10 +5,11 @@
 
 // console.log(`My name is ${sillyName}.`);
 
-import superheroes from 'superheroes';
+// import superheroes from 'superheroes';
 
-const superName = superheroes.random();
+// const superName = superheroes.random();
 
 // const superheroes = require('superheroes');
 
-console.log(`I am ${superName}!`);
+// console.log(`I am ${superName}!`);
+
