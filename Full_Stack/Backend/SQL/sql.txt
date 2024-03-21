@@ -22,3 +22,8 @@ CREATE TABLE orders (
   FOREIGN KEY (customer_id) REFERENCES customers(id),
   FOREIGN KEY (product_id) REFERENCES products(id)
   )
+
+
+SELECT country 
+FROM world_food 
+WHERE country like 'United' || '%'
