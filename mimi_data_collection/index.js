@@ -1,48 +1,40 @@
-import React, { useState } from 'react';
+const express = require('express');
+const bodyParser = require('body-parser');
+const pg = require('pg');
+const { postgresPassword } = require('./config');
 
-function DataCollectionForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    age: ''
-  });
+// import express from "express";
+// import bodyParser from "body-parser";
+// import pg from "pg";
+// const { postgresPassword } = require('./config');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+// Create a new Express application
+const app = express();
+const port = 3000;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can handle form submission here, e.g., send data to backend
-    console.log(formData);
-  };
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>Name:</label>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <label>Email:</label>
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <label>Age:</label>
-      <input
-        type="number"
-        name="age"
-        value={formData.age}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
-  );
-}
+// PostgreSQL connection configuration
+// const pool = new Pool({
+//   user: 'your_postgres_username',
+//   host: 'localhost',
+//   database: 'your_database_name',
+//   password: 'your_database_password',
+//   port: 5432, // Default PostgreSQL port
+// });
 
-export default DataCollectionForm;
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "mimi",
+  password: postgresPassword,
+  port: 5432,
+});
+db.connect();
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
