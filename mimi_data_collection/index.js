@@ -37,6 +37,8 @@ app.get('/', (req, res) => {
           <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
           <button type="submit">Submit</button>
         </form>
+
+        <a href="/all-posts"><button>View All Posts</button></a>
       </body>
     </html>
   `);
@@ -53,7 +55,49 @@ app.post('/submit', (req, res) => {
       res.status(500).send('Error inserting data');
     } else {
       console.log('Data inserted successfully');
-      res.send('Data inserted successfully');
+      // res.send('Data inserted successfully');
+   // Construct HTML response
+   const htmlResponse = `
+   <html>
+     <head>
+       <title>${title}</title>
+     </head>
+     <body>
+       <h3>${title}</h3>
+       <p>${content}</p>
+       <a href="/all-posts"><button>View All Posts</button></a>
+     </body>
+   </html>
+ `;
+ // Send HTML response
+ res.send(htmlResponse);
+}
+});
+});
+
+// Define a route to display all posts
+app.get('/all-posts', (req, res) => {
+  // Fetch all posts from the database
+  db.query('SELECT * FROM blog_post', (error, results) => {
+    if (error) {
+      console.error('Error fetching posts:', error);
+      res.status(500).send('Error fetching posts');
+    } else {
+      const posts = results.rows;
+      // Render a page displaying all posts
+      res.send(`
+        <html>
+          <head>
+            <title>All Posts</title>
+          </head>
+          <body>
+            <h1>All Posts</h1>
+            <ul>
+              ${posts.map(post => `<li><strong>${post.title}</strong>: ${post.content}</li>`).join('')}
+            </ul>
+          </body>
+        </html>
+      `);
     }
   });
 });
