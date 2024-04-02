@@ -3,11 +3,6 @@ const bodyParser = require('body-parser');
 const pg = require('pg');
 const { postgresPassword } = require('./config');
 
-// import express from "express";
-// import bodyParser from "body-parser";
-// import pg from "pg";
-// const { postgresPassword } = require('./config');
-
 // Create a new Express application
 const app = express();
 const port = 3000;
@@ -15,15 +10,6 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// PostgreSQL connection configuration
-// const pool = new Pool({
-//   user: 'your_postgres_username',
-//   host: 'localhost',
-//   database: 'your_database_name',
-//   password: 'your_database_password',
-//   port: 5432, // Default PostgreSQL port
-// });
 
 const db = new pg.Client({
   user: "postgres",
@@ -33,6 +19,46 @@ const db = new pg.Client({
   port: 5432,
 });
 db.connect();
+
+
+// Define a GET route
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>Blog Post</title>
+      </head>
+      <body>
+        <h1>Blog Post</h1>
+        <form action="/submit" method="post">
+          <label for="title">Title:</label><br>
+          <input type="text" id="title" name="title"><br>
+          <label for="content">Content:</label><br>
+          <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
+          <button type="submit">Submit</button>
+        </form>
+      </body>
+    </html>
+  `);
+});
+
+// Define a POST route to handle form submission
+app.post('/submit', (req, res) => {
+  const { title, content } = req.body;
+
+  // Insert the data into the database
+  db.query('INSERT INTO blog_post (description, blog_data) VALUES ($1, $2)', [title, content], (error, results) => {
+    if (error) {
+      console.error('Error inserting data:', error);
+      res.status(500).send('Error inserting data');
+    } else {
+      console.log('Data inserted successfully');
+      res.send('Data inserted successfully');
+    }
+  });
+});
+
+
 
 // Start the server
 app.listen(port, () => {
