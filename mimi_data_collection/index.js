@@ -63,7 +63,7 @@ app.post('/submit', (req, res) => {
        <title>${title}</title>
      </head>
      <body>
-       <h3>${title}</h3>
+       <h2>${title}</h2>
        <p>${content}</p>
        <a href="/all-posts"><button>View All Posts</button></a>
      </body>
@@ -91,7 +91,7 @@ app.get('/all-posts', (req, res) => {
             <title>All Posts</title>
           </head>
           <body>
-            <h1>All Posts</h1>
+            <h2>All Posts</h2>
             <ul>
               ${posts.map(post => `<li><strong>${post.title}</strong>: ${post.content}</li>`).join('')}
             </ul>
