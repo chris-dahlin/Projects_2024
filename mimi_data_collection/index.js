@@ -26,10 +26,10 @@ app.get('/', (req, res) => {
   res.send(`
     <html>
       <head>
-        <title>Blog Post</title>
+        <title>Data Collection App</title>
       </head>
       <body>
-        <h1>Blog Post</h1>
+        <h2>Data Collection App</h2>
         <form action="/submit" method="post">
           <label for="title">Title:</label><br>
           <input type="text" id="title" name="title"><br>
