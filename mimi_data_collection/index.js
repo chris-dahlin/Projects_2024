@@ -84,6 +84,7 @@ app.get('/all-posts', (req, res) => {
       res.status(500).send('Error fetching posts');
     } else {
       const posts = results.rows;
+      console.log(posts);
       // Render a page displaying all posts
       res.send(`
         <html>
@@ -93,7 +94,7 @@ app.get('/all-posts', (req, res) => {
           <body>
             <h2>All Posts</h2>
             <ul>
-              ${posts.map(post => `<li><strong>${post.title}</strong>: ${post.content}</li>`).join('')}
+              ${posts.map(post => `<li><strong>${post.description}</strong>: ${post.blog_data}</li>`).join('')}
             </ul>
           </body>
         </html>
