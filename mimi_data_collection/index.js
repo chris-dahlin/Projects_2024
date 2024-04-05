@@ -24,25 +24,29 @@ db.connect();
 
 // Define a GET route
 app.get('/', (req, res) => {
-  res.send(`
-    <html>
-      <head>
-        <title>Data Collection App</title>
-      </head>
-      <body>
-        <h2>Data Collection App</h2>
-        <form action="/submit" method="post">
-          <label for="title">Title:</label><br>
-          <input type="text" id="title" name="title"><br>
-          <label for="content">Content:</label><br>
-          <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
-          <button type="submit">Submit</button>
-        </form>
+  res.sendFile(__dirname + '/index.html');
+  // res.send(
+    
+    // `
+    // <html>
+    //   <head>
+    //     <title>Data Collection App</title>
+    //   </head>
+    //   <body>
+    //     <h2>Data Collection App</h2>
+    //     <form action="/submit" method="post">
+    //       <label for="title">Title:</label><br>
+    //       <input type="text" id="title" name="title"><br>
+    //       <label for="content">Content:</label><br>
+    //       <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
+    //       <button type="submit">Submit</button>
+    //     </form>
 
-        <a href="/all-posts"><button>View All Posts</button></a>
-      </body>
-    </html>
-  `);
+    //     <a href="/all-posts"><button>View All Posts</button></a>
+    //   </body>
+    // </html>
+  // `
+  // );
 });
 
 // Define a POST route to handle form submission
