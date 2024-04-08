@@ -63,15 +63,21 @@ app.post('/submit', (req, res) => {
       // res.send('Data inserted successfully');
    // Construct HTML response
    const htmlResponse = `
-   <html>
-     <head>
-       <title>${title}</title>
-     </head>
-     <body>
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>${title}</title>
+     <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+     <div class="container">
        <h2>${title}</h2>
        <p>${content}</p>
-       <a href="/all-posts"><button>View All Posts</button></a>
-     </body>
+       <a href="/all-posts"><button class="view-all">View All Posts</button></a>
+     </div>
+   </body>
    </html>
  `;
  // Send HTML response
@@ -92,18 +98,23 @@ app.get('/all-posts', (req, res) => {
       console.log(posts);
       // Render a page displaying all posts
       res.send(`
-        <html>
-          <head>
-            <title>All Posts</title>
-          </head>
-          <body>
+      <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>All Posts</title>
+          <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+          <div class="container">
             <h2>All Posts</h2>
             <ul>
               ${posts.map(post => `<li><strong>${post.description}</strong>: ${post.blog_data}</li>`).join('')}
-              </br>
-              <a href="/"><button>Home</button></a>
             </ul>
-          </body>
+            <a href="/"><button class="home-btn">Home</button></a>
+          </div>
+        </body>
         </html>
       `);
     }
