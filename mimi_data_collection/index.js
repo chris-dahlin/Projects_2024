@@ -100,6 +100,8 @@ app.get('/all-posts', (req, res) => {
             <h2>All Posts</h2>
             <ul>
               ${posts.map(post => `<li><strong>${post.description}</strong>: ${post.blog_data}</li>`).join('')}
+              </br>
+              <a href="/"><button>Home</button></a>
             </ul>
           </body>
         </html>
