@@ -180,9 +180,9 @@ app.get('/edit-post/:postId', (req, res) => {
             <div class="container">
               <h2>Edit Post</h2>
               <form action="/update-post/${postId}" method="post">
-                <label for="description">Description:</label><br>
+                <label for="description">Title:</label><br>
                 <input type="text" id="description" name="description" value="${post.description}"><br>
-                <label for="blogData">Blog Data:</label><br>
+                <label for="blogData">Post</label><br>
                 <textarea id="blogData" name="blogData" rows="4" cols="50">${post.blog_data}</textarea><br><br>
                 <button type="submit">Update</button>
               </form>

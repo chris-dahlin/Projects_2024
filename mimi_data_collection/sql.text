@@ -1,0 +1,5 @@
+CREATE TABLE blog_post (
+  id SERIAL NOT NULL,
+  description TEXT,
+  blog_data TEXT
+);
