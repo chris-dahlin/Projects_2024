@@ -174,7 +174,7 @@ app.get('/edit-post/:postId', (req, res) => {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Edit Post</title>
-            <link rel="stylesheet" href="styles.css">
+        
           </head>
           <body>
             <div class="container">
