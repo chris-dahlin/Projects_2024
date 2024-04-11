@@ -10,7 +10,7 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 const db = new pg.Client({
   user: "postgres",
@@ -88,113 +88,88 @@ app.post('/submit', (req, res) => {
 
 // Define a route to display all posts
 app.get('/all-posts', (req, res) => {
-  // Fetch all posts from the database
-  db.query('SELECT * FROM blog_post', (error, results) => {
-    if (error) {
-      console.error('Error fetching posts:', error);
-      res.status(500).send('Error fetching posts');
-    } else {
-      const posts = results.rows;
-      console.log(posts);
-      // Render a page displaying all posts
-//       res.send(`
-//       <!DOCTYPE html>
-//         <html lang="en">
-//         <head>
-//           <meta charset="UTF-8">
-//           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//           <title>All Posts</title>
-//           <link rel="stylesheet" href="styles.css">
-//         </head>
-//         <body>
-//           <div class="container">
-//             <h2>All Posts</h2>
-//             <ul>
-//               ${posts.map(post => `<li><strong>${post.description}</strong>: ${post.blog_data}</li>`).join('')}
-//             </ul>
-//             <a href="/"><button class="home-btn">Home</button></a>
-//           </div>
-//         </body>
-//         </html>
-//       `);
-//     }
-//   });
-// });
-
-// Render a page displaying all posts
-const htmlResponse = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Posts</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <h2>All Posts</h2>
-    <ul>
-      ${posts.map(post => `
-        <li>
-          <strong>${post.description}</strong>: ${post.blog_data}
-          <a href="/edit-post/${post.id}"><button>Edit</button></a>
-        </li>
-      `).join('')}
-    </ul>
-    <a href="/"><button class="home-btn">Home</button></a>
-  </div>
-</body>
-</html>
-`;
-res.send(htmlResponse);
-}
-});
-});
-
-// Define a route to edit a post
-app.get('/edit-post/:postId', (req, res) => {
-  const { postId } = req.params;
-
-  // Fetch the post with the specified ID from the database
-  db.query('SELECT * FROM blog_post WHERE id = $1', [postId], (error, results) => {
-    if (error) {
-      console.error('Error fetching post:', error);
-      res.status(500).send('Error fetching post');
-    } else {
-      const post = results.rows[0]; // Assuming there's only one post with the given ID
-      if (!post) {
-        res.status(404).send('Post not found');
+    // Fetch all posts from the database
+    db.query('SELECT * FROM blog_post', (error, results) => {
+      if (error) {
+        console.error('Error fetching posts:', error);
+        res.status(500).send('Error fetching posts');
       } else {
-        // Render a form to edit the post
-        res.send(`
+        const posts = results.rows;
+        console.log(posts);
+        // Render a page displaying all posts
+        const htmlResponse = `
           <!DOCTYPE html>
           <html lang="en">
           <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Edit Post</title>
-            <link rel="stylesheet" href="styles.css">        
+            <title>All Posts</title>
+            <link rel="stylesheet" href="styles.css">
           </head>
           <body>
             <div class="container">
-              <h2>Edit Post</h2>
-              <form action="/update-post/${postId}" method="post">
-                <label for="description">Title:</label><br>
-                <input type="text" id="description" name="description" value="${post.description}"><br>
-                <label for="blogData">Post</label><br>
-                <textarea id="blogData" name="blogData" rows="4" cols="50">${post.blog_data}</textarea><br><br>
-                <button type="submit">Update</button>
-              </form>
-              <a href="/all-posts"><button class="back-btn">Back to All Posts</button></a>
+              <h2>All Posts</h2>
+              <ul>
+                ${posts.map(post => `
+                  <li>
+                    <strong>${post.description}</strong>: ${post.blog_data}
+                    <a href="/edit-post/${post.id}"><button>Edit</button></a>
+                  </li>
+                `).join('')}
+              </ul>
+              <a href="/"><button class="home-btn">Home</button></a>
             </div>
           </body>
           </html>
-        `);
+        `;
+        res.send(htmlResponse);
       }
-    }
+    });
   });
-});
+
+// Define a route to edit a post
+app.get('/edit-post/:postId', (req, res) => {
+    const { postId } = req.params;
+  
+    // Fetch the post with the specified ID from the database
+    db.query('SELECT * FROM blog_post WHERE id = $1', [postId], (error, results) => {
+      if (error) {
+        console.error('Error fetching post:', error);
+        res.status(500).send('Error fetching post');
+      } else {
+        const post = results.rows[0]; // Assuming there's only one post with the given ID
+        if (!post) {
+          res.status(404).send('Post not found');
+        } else {
+          // Render a form to edit the post
+          res.send(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Edit Post</title>
+              <link rel="stylesheet" href="styles.css">        
+            </head>
+            <body>
+              <div class="container">
+                <h2>Edit Post</h2>
+                <form action="/update-post/${postId}" method="post">
+                  <label for="description">Title:</label><br>
+                  <input type="text" id="description" name="description" value="${post.description}"><br>
+                  <label for="blogData">Post</label><br>
+                  <textarea id="blogData" name="blogData" rows="4" cols="50">${post.blog_data}</textarea><br><br>
+                  <button type="submit">Update</button>
+                </form>
+                <a href="/all-posts"><button class="back-btn">Back to All Posts</button></a>
+              </div>
+            </body>
+            </html>
+          `);
+        }
+      }
+    });
+  });
 
 // Define a route to handle post updates
 app.post('/update-post/:postId', (req, res) => {
