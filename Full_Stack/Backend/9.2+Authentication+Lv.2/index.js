@@ -11,7 +11,7 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "secrets",
-  password: "123456",
+  password: "Vq6rVcrxwh",
   port: 5432,
 });
 db.connect();
@@ -45,13 +45,17 @@ app.post("/register", async (req, res) => {
     } else {
       // hash password
       bcrypt.hash(password, saltRounds, async (err, hash) => {
+        if (err) {
+          console.log("Error Hashing Password", err);
+        } else {
      const result = await db.query(
         "INSERT INTO users (email, password) VALUES ($1, $2)",
-        [email, password]
+        [email, hash]
       );
       console.log(result);
       res.render("secrets.ejs");
-      })
+      }
+    });
     }
   } catch (err) {
     console.log(err);
